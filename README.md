@@ -27,3 +27,57 @@ schema by mapping CAN IDs to signal names, scaling factors, and physical units.
 The dataset was selected due to its richness in signal diversity, realistic driving conditions, and
 compatibility with diagnostic analysis. It serves as the foundational input for the entire diagnostic
 pipeline from CAN decoding to knowledge graph construction and semantic query resolution.
+
+# CAN Data Preprocessing and Decoding
+The diagnostic process starts with decoding raw CAN data, typically stored in the standardized .MF4 binary format, commonly used in automotive applications. This format, defined by ASAM, contains time-stamped messages recorded during real-world driving, such as logs from a Tesla Model 3.
+
+To interpret this data, a DBC (Database CAN) file is used. It defines how binary messages map to human-readable signals through message names, signal definitions, scaling factors, offsets, units, and valid ranges. It also outlines the byte structure of each signal within a message.
+
+During preprocessing, signals undergo scaling to real-world values, offset correction, range validation, and contextual labeling with physical units (e.g., °C, kph). Each message is accurately timestamped to maintain the temporal sequence.
+
+The decoded output is structured into a tabular format with fields like Timestamp, CAN ID, Message Name, Signal, Physical Value, Raw Value, and Unit. This cleaned dataset forms the foundation for building the semantic knowledge graph used in further diagnostics.
+
+# Knowledge Graph Construction using Neo4j
+Neo4j is a highly scalable and efficient graph database designed to store, manage, and query data
+structured as interconnected nodes and relationships. Unlike traditional relational databases that
+organize data into rows and tables, Neo4j uses a graph-based model where each piece of information
+is stored as a node (such as a signal, message, or unit), and the connections between them are
+represented as relationships (like "HAS_SIGNAL" or "OBSERVED_AT"). This model closely
+mirrors the way data is naturally connected in the real world, making it ideal for applications
+involving complex relationships such as vehicle communication systems.
+Once the CAN data is decoded, it is structured into a semantic Knowledge Graph using Neo4j, a
+highly scalable graph database. Neo4j offers a native graph processing engine and supports Cypher,
+a declarative query language designed for flexible traversal of graph patterns.
+In this system, each entity in the vehicle communication stream such as messages, signals,
+timestamps, and units is represented as a node, while their associations are represented as edges.
+This approach reflects the real world relational nature of vehicular data, enabling semantic in-
+terpretation, reasoning, and efficient query execution. This structured knowledge graph enables efficient and explainable reasoning across interconnected vehicle data, allowing intelligent agents
+to traverse, search, and analyze relationships with ease.
+
+# Multi-Agent System Design
+To manage the complexity of vehicle diagnostics and ensure modular, intelligent interactions, the
+system is implemented using a multi-agent architecture. Each agent is a specialized software com-
+ponent designed to handle a specific role within the pipeline, coordinated by a central Orchestrator
+Agent.
+Agents and Their Roles:
+– Orchestrator Agent: Acts as the central controller, managing the end-to-end session flow. It
+invokes other agents in sequence, maintains context across user queries, and integrates their
+outputs to generate coherent responses.
+– Query Planner Agent: Interprets the user’s natural language input to extract intent and relevant
+entities. It uses regular expressions and keyword patterns to classify query types (e.g., temporal,
+relational) and extract signal names, units, or timestamps. The output is a structured "intent
+profile" that guides subsequent processing.
+– Semantic Retriever Agent: Performs semantic search to match user queries with the most
+relevant entities in the knowledge graph. It utilizes the MiniLM-L6-v2 model from Sentence
+Transformers to generate 384-dimensional sentence embeddings and applies FAISS (Facebook
+AI Similarity Search) for efficient nearest-neighbor retrieval using L2 distance metrics. This
+agent enables fuzzy, meaning-based matching even when the user’s query does not exactly
+match the graph labels.
+– Graph Explorer Agent: Constructs and executes dynamic Cypher queries to interact with the
+Neo4j graph. It retrieves relevant nodes, relationships, and metadata based on the planner’s
+intent and the retriever’s matched entities. It also performs temporal reasoning where needed.
+– Response Synthesizer Agent: Converts structured query results into a fluent, human-readable
+response using the Gemini LLM API. It integrates metadata such as values, timestamps, and
+signal labels to produce coherent explanations tailored to user needs.
+This agent-based system mirrors collaborative human problem-solving, where each agent con-
+tributes domain-specific knowledge and works in sequence to achieve a shared diagnostic goal.
