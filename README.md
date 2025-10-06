@@ -1,2 +1,10 @@
 # AutoInsight---Neo4j-Based-Multi-Agent-GraphRAG-Framework-for-Vehicle-Diagnostic-Reasoning
 AutoInsight is an intelligent assistant that converts raw CAN data into structured insights using a Neo4j-based knowledge graph and multi-agent system. It enables users to query vehicle behavior in natural language without deep protocol knowledge, making diagnostics faster, accurate, and accessible.
+# Overview of Controller Area Network (CAN)
+The Controller Area Network (CAN) is a reliable communication protocol developed by Bosch, widely used in modern, especially autonomous and electric vehicles. It enables real-time communication between Electronic Control Units (ECUs), which manage key vehicle functions like engine control, braking, and battery systems.
+
+CAN data consists of compact, encoded messages that are efficient for machines but difficult for humans to interpret. These messages use identifiers (CAN IDs) and contain multiple signals packed into a few bytes. Decoding them requires DBC (Database CAN) files, which define how signals are extracted using bit positions, scaling factors, and offsets.
+
+In autonomous vehicles, the volume of CAN data is significantly higher due to continuous sensor and actuator communication. This makes manual analysis complex and time-consuming, especially for junior engineers or non-experts.
+
+ECUs operate in real time and constantly exchange critical data via CAN. As vehicle systems grow more connected and automated, understanding CAN data becomes essential for diagnostics, safety, and performance—requiring advanced tools to simplify interpretation.
