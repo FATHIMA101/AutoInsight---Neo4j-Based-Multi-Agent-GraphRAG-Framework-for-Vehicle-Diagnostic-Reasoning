@@ -17,3 +17,13 @@ MAS architectures offer modularity, scalability, and fault tolerance, making the
 In our vehicle diagnostic assistant, the multi-agent approach enables efficient handling of complex user queries. Individual agents are responsible for tasks like natural language processing, semantic retrieval, graph exploration, and response generation. Together, they form a collaborative system that interprets user input and returns human-readable insights from CAN data.
 
 This design allows even non-experts to interact with the system intuitively, without needing deep knowledge of CAN protocols or graph databases, making advanced diagnostics more accessible.
+
+# Dataset Description
+The dataset used in this project was collected from a real world electric vehicle specifically a Tesla
+Model 3 and contains CAN log files in .MF4 format. These logs capture binary encoded messages
+transmitted over the vehicle’s internal Controller Area Network (CAN) during various driving
+sessions. Along with the logs, a DBC (Database CAN) file is provided, which serves as a decoding
+schema by mapping CAN IDs to signal names, scaling factors, and physical units.
+The dataset was selected due to its richness in signal diversity, realistic driving conditions, and
+compatibility with diagnostic analysis. It serves as the foundational input for the entire diagnostic
+pipeline from CAN decoding to knowledge graph construction and semantic query resolution.
