@@ -94,3 +94,16 @@ This agent-based system mirrors collaborative human problem-solving, where each 
 tributes domain-specific knowledge and works in sequence to achieve a shared diagnostic goal.
 <img width="733" height="482" alt="Multi agent architecture" src="https://github.com/user-attachments/assets/d834ee5a-b9fb-46b1-925d-765ca4346009" />
 
+# Result
+# Decoded CAN Data
+<img width="752" height="277" alt="result 1" src="https://github.com/user-attachments/assets/4fdc0c9d-d2f7-4fed-87b6-a8579bc26a00" />
+
+# Knowledge Graph created using Decoded CAN Data
+<img width="547" height="478" alt="result 2" src="https://github.com/user-attachments/assets/e2c979ce-ac38-4ec6-9949-6e54b933e831" />
+<img width="508" height="512" alt="result 3" src="https://github.com/user-attachments/assets/18338f2c-4c0d-4857-beea-9ab38ee6a48b" />
+
+# Queries and Response with Answer Relevence
+<img width="735" height="775" alt="result 4" src="https://github.com/user-attachments/assets/29cea984-fe34-4b8f-b03e-29ed25bc02ac" />
+
+
+
