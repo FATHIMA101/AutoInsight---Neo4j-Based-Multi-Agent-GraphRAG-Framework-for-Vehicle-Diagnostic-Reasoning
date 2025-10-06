@@ -60,24 +60,29 @@ system is implemented using a multi-agent architecture. Each agent is a speciali
 ponent designed to handle a specific role within the pipeline, coordinated by a central Orchestrator
 Agent.
 Agents and Their Roles:
+
 – Orchestrator Agent: Acts as the central controller, managing the end-to-end session flow. It
 invokes other agents in sequence, maintains context across user queries, and integrates their
 outputs to generate coherent responses.
+
 – Query Planner Agent: Interprets the user’s natural language input to extract intent and relevant
 entities. It uses regular expressions and keyword patterns to classify query types (e.g., temporal,
 relational) and extract signal names, units, or timestamps. The output is a structured "intent
 profile" that guides subsequent processing.
+
 – Semantic Retriever Agent: Performs semantic search to match user queries with the most
 relevant entities in the knowledge graph. It utilizes the MiniLM-L6-v2 model from Sentence
 Transformers to generate 384-dimensional sentence embeddings and applies FAISS (Facebook
 AI Similarity Search) for efficient nearest-neighbor retrieval using L2 distance metrics. This
 agent enables fuzzy, meaning-based matching even when the user’s query does not exactly
 match the graph labels.
+
 – Graph Explorer Agent: Constructs and executes dynamic Cypher queries to interact with the
 Neo4j graph. It retrieves relevant nodes, relationships, and metadata based on the planner’s
 intent and the retriever’s matched entities. It also performs temporal reasoning where needed.
 – Response Synthesizer Agent: Converts structured query results into a fluent, human-readable
 response using the Gemini LLM API. It integrates metadata such as values, timestamps, and
 signal labels to produce coherent explanations tailored to user needs.
+
 This agent-based system mirrors collaborative human problem-solving, where each agent con-
 tributes domain-specific knowledge and works in sequence to achieve a shared diagnostic goal.
