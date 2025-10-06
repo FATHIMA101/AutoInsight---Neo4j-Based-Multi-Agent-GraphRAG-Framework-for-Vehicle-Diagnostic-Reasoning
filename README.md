@@ -45,14 +45,17 @@ is stored as a node (such as a signal, message, or unit), and the connections be
 represented as relationships (like "HAS_SIGNAL" or "OBSERVED_AT"). This model closely
 mirrors the way data is naturally connected in the real world, making it ideal for applications
 involving complex relationships such as vehicle communication systems.
+
 Once the CAN data is decoded, it is structured into a semantic Knowledge Graph using Neo4j, a
 highly scalable graph database. Neo4j offers a native graph processing engine and supports Cypher,
 a declarative query language designed for flexible traversal of graph patterns.
+
 In this system, each entity in the vehicle communication stream such as messages, signals,
 timestamps, and units is represented as a node, while their associations are represented as edges.
 This approach reflects the real world relational nature of vehicular data, enabling semantic in-
 terpretation, reasoning, and efficient query execution. This structured knowledge graph enables efficient and explainable reasoning across interconnected vehicle data, allowing intelligent agents
 to traverse, search, and analyze relationships with ease.
+
 
 # Multi-Agent System Design
 To manage the complexity of vehicle diagnostics and ensure modular, intelligent interactions, the
@@ -86,3 +89,5 @@ signal labels to produce coherent explanations tailored to user needs.
 
 This agent-based system mirrors collaborative human problem-solving, where each agent con-
 tributes domain-specific knowledge and works in sequence to achieve a shared diagnostic goal.
+<img width="733" height="482" alt="Multi agent architecture" src="https://github.com/user-attachments/assets/d834ee5a-b9fb-46b1-925d-765ca4346009" />
+
