@@ -36,6 +36,8 @@ To interpret this data, a DBC (Database CAN) file is used. It defines how binary
 During preprocessing, signals undergo scaling to real-world values, offset correction, range validation, and contextual labeling with physical units (e.g., °C, kph). Each message is accurately timestamped to maintain the temporal sequence.
 
 The decoded output is structured into a tabular format with fields like Timestamp, CAN ID, Message Name, Signal, Physical Value, Raw Value, and Unit. This cleaned dataset forms the foundation for building the semantic knowledge graph used in further diagnostics.
+<img width="820" height="457" alt="can architecture" src="https://github.com/user-attachments/assets/97f30677-d8ed-4a0f-a43f-3ec47bf7908d" />
+
 
 # Knowledge Graph Construction using Neo4j
 Neo4j is a highly scalable and efficient graph database designed to store, manage, and query data
@@ -55,6 +57,7 @@ timestamps, and units is represented as a node, while their associations are rep
 This approach reflects the real world relational nature of vehicular data, enabling semantic in-
 terpretation, reasoning, and efficient query execution. This structured knowledge graph enables efficient and explainable reasoning across interconnected vehicle data, allowing intelligent agents
 to traverse, search, and analyze relationships with ease.
+<img width="642" height="505" alt="Knowledge graph" src="https://github.com/user-attachments/assets/36aa5a38-26d1-47a0-a769-f097744d414e" />
 
 
 # Multi-Agent System Design
