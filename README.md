@@ -9,6 +9,9 @@ In autonomous vehicles, the volume of CAN data is significantly higher due to co
 
 ECUs operate in real time and constantly exchange critical data via CAN. As vehicle systems grow more connected and automated, understanding CAN data becomes essential for diagnostics, safety, and performance—requiring advanced tools to simplify interpretation.
 
+# GraphRAG (Graph based Retrieval Augmented Generation)
+GraphRAG (Graph based Retrieval Augmented Generation) is a method that combines graph databases with language models to improve how information is retrieved and used in responses. Instead of relying only on text search, GraphRAG organizes data as a network of connected nodes representing concepts, entities, or documents. This structure helps the model understand relationships and context more effectively. When a query is made, it retrieves relevant nodes and their connections, allowing for more accurate, contextual, and explainable answers. It is often used in applications like knowledge management, research analysis, and intelligent search systems.
+
 # Role of Multi-Agent Systems in Intelligent Vehicle Assistants
 Agents are autonomous software entities that perceive their environment, make decisions, and take actions to achieve specific goals. In a multi-agent system (MAS), several such agents work together, each handling a specialized task while collaborating to solve complex problems more efficiently than a single monolithic system.
 
